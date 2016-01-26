@@ -1,0 +1,439 @@
+/*color vars*/
+@white: #ffffff;
+@black: #000000;
+@helpcolor: #d7d7d7;
+
+/*font vars*/
+@fontRoboto: 'Roboto', sans-serif;
+@fontSizeH1: 37px;	@fontLineH1: 55px;
+@fontSizeH2: 30px;	@fontLineH2: 45px;
+@fontSizeH3: 21px;	@fontLineH3: 32px;
+@fontSizeH4: 16px;	@fontLineH4: 27px;
+@fontSizeH6: 14px;	@fontLineH6: 25px;
+@fontSizeP: 14px;	@fontLineP: 25px;
+@letterSpacing: 0.05em;
+@fontWeight: normal;
+
+/*other vars*/
+@blockMargin: 5px;
+
+/*font mixins*/
+.fonts(@size) {
+	font-family: @fontRoboto;
+	font-weight: @fontWeight;
+	letter-spacing: @letterSpacing;
+	margin: 0;
+	& when (@size = h1) {
+		font-size: @fontSizeH1;
+		line-height: @fontLineH1;
+	}
+	& when (@size = h2) {
+		font-size: @fontSizeH2;
+		line-height: @fontLineH2;
+	}
+	& when (@size = h3) {
+		font-size: @fontSizeH3;
+		line-height: @fontLineH3;
+	}
+	& when (@size = h4) {
+		font-size: @fontSizeH4;
+		line-height: @fontLineH4;
+	}
+	& when (@size = h5), (@size = p) {
+		font-size: @fontSizeP;
+		line-height: @fontLineP;
+	}
+	& when (@size = h6) {
+		font-size: @fontSizeH6;
+		line-height: @fontLineH6;
+	}
+}
+
+/*fonts including*/
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,900italic,900,700italic,700,500italic,500,400italic,300,100italic,100,300italic);
+@font-face {
+	font-family: 'FontAwesome';
+	src: url('../fonts/fontawesome/fontawesome-webfont.eot');
+	src: url('../fonts/fontawesome/fontawesome-webfont.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/fontawesome/fontawesome-webfont.woff') format('woff'),
+		 url('../fonts/fontawesome/fontawesome-webfont.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Icomoon';
+	src:url('../fonts/icomoon/icomoon.eot?hhk3fx');
+	src:url('../fonts/icomoon/icomoon.eot?#iefixhhk3fx') format('embedded-opentype'),
+		url('../fonts/icomoon/icomoon.woff?hhk3fx') format('woff'),
+		url('../fonts/icomoon/icomoon.ttf?hhk3fx') format('truetype'),
+		url('../fonts/icomoon/icomoon.svg?hhk3fx#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'yandex';
+	src: url('../fonts/yandex/yandex.eot');
+	src: url('../fonts/yandex/yandex.eot?#iefix') format('embedded-opentype'),
+	url('../fonts/yandex/yandex.woff') format('woff'),
+	url('../fonts/yandex/yandex.ttf') format('truetype'),
+	url('../fonts/yandex/yandex.svg#yandex') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/*font mixins*/
+.icomoon{
+    font-family: 'Icomoon',sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    speak: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.fa {
+    font-family: 'FontAwesome',sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    speak: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.textCenter{
+	text-align: center;
+	text-align: -webkit-center;
+	text-align: -moz-center;
+}
+.textLeft{
+	text-align: left;
+	text-align: -webkit-left;
+	text-align: -moz-left;
+}
+.textRight{
+	text-align: right;
+	text-align: -webkit-right;
+	text-align: -moz-right;
+}
+
+/*widget mixins*/
+.transition {
+	-webkit-transition: 0.3s all ease;
+	-moz-transition: 0.3s all ease;
+	-ms-transition: 0.3s all ease;
+	-o-transition: 0.3s all ease;
+	transition: 0.3s all ease;
+}
+.buttonBehavior(@design, @size ) {
+	.transition();
+	.fonts(p);
+	@small-button-size: 120px;
+	@middle-button-size: 140px;
+	@large-button-size: 160px;
+	@small-button-padding: 10px;
+	@middle-button-padding: 12.5px 15px;
+	@large-button-padding: 15px 20px;
+	font-family: @fontRoboto;
+	font-weight: @fontWeight;
+	position: relative;
+    display: inline-block;
+	max-width: 100%;
+	text-align: center;
+	word-break: break-word;
+	border-radius: 0;
+	text-transform: none;
+	&:before, &:after {
+		.transition();
+		content: "";
+		position: absolute;
+	}
+	& when (@design = 1), (@design = 2), (@design = 3) {
+		& when (@size = 1) { min-width: @small-button-size; }
+		& when (@size = 2) { min-width: @middle-button-size; }
+		& when (@size = 3) { min-width: @large-button-size; }
+	}
+	& when (@design = 1) {
+		& when (@size = 1) { padding: @small-button-padding; }
+		& when (@size = 2) { padding: @middle-button-padding; }
+		& when (@size = 3) { padding: @large-button-padding; }
+	}
+	& when (@design = 2) {
+		border: 2px solid !important;
+		& when (@size = 1) { padding: 8px 10px; }
+		& when (@size = 2) { padding: 10.5px 15px; }
+		& when (@size = 3) { padding: 13px 20px; }
+	}
+	& when (@design = 3) {
+		transition: none;
+		& when (@size = 1) { padding: 10px 30px; }
+		& when (@size = 2) { padding: 12.5px 30px; }
+		& when (@size = 3) { padding: 15px 30px; }
+		&:before, &:after {
+			width: 20px;
+			height: 100%;
+		}
+		&:before {
+			top: 0;
+			left: 0;
+		}
+		&:after {
+			bottom: 0;
+			right: 0;
+		}
+	}
+}
+.buttonColor(@design) {
+	& when (@design = 1), (@design = 2), (@design = 3) {
+		color: @white;
+		background: darken(@text2, 45%);
+		&:hover { background: lighten(@text2, 20%); }
+		&:active { background: @text2; }
+	}
+	& when (@design = 2) {
+		color: @black;
+		background: @white;
+		border-color: darken(@text2, 45%) !important;
+		&:hover {
+			color: @white;
+			border-color: lighten(@text2, 20%) !important;
+		}
+		&:active {
+			color: @white;
+			border-color: @text2 !important;
+		}
+	}
+	& when (@design = 3) {
+		&:before {
+			background: -ms-linear-gradient(bottom left, darken(@text2, 45%) 46%, @white 48%, @white 50%, darken(@text2, 45%) 52%);
+			background: -moz-linear-gradient(bottom left, darken(@text2, 45%) 46%, @white 48%, @white 50%, darken(@text2, 45%) 52%);
+			background: -o-linear-gradient(bottom left, darken(@text2, 45%) 46%, @white 48%, @white 50%, darken(@text2, 45%) 52%);
+			background: -webkit-linear-gradient(bottom left, darken(@text2, 45%) 46%, @white 48%, @white 50%, darken(@text2, 45%) 52%);
+			background: linear-gradient(to top right, darken(@text2, 45%) 46%, @white 48%, @white 50%, darken(@text2, 45%) 52%);
+		}
+		&:after {
+			background: -ms-linear-gradient(bottom left, darken(@text2, 45%) 48%, @white 50%, @white 52%, darken(@text2, 45%) 54%);
+			background: -moz-linear-gradient(bottom left, darken(@text2, 45%) 48%, @white 50%, @white 52%, darken(@text2, 45%) 54%);
+			background: -o-linear-gradient(bottom left, darken(@text2, 45%) 48%, @white 50%, @white 52%, darken(@text2, 45%) 54%);
+			background: -webkit-linear-gradient(bottom left, darken(@text2, 45%) 48%, @white 50%, @white 52%, darken(@text2, 45%) 54%);
+			background: linear-gradient(to top right, darken(@text2, 45%) 48%, @white 50%, @white 52%, darken(@text2, 45%) 54%);
+		}
+		&:hover {
+			&:before {
+				background: -ms-linear-gradient(bottom left, lighten(@text2, 20%) 46%, @white 48%, @white 50%, lighten(@text2, 20%) 52%);
+				background: -moz-linear-gradient(bottom left, lighten(@text2, 20%) 46%, @white 48%, @white 50%, lighten(@text2, 20%) 52%);
+				background: -o-linear-gradient(bottom left, lighten(@text2, 20%) 46%, @white 48%, @white 50%, lighten(@text2, 20%) 52%);
+				background: -webkit-linear-gradient(bottom left, lighten(@text2, 20%) 46%, @white 48%, @white 50%, lighten(@text2, 20%) 52%);
+				background: linear-gradient(to top right, lighten(@text2, 20%) 46%, @white 48%, @white 50%, lighten(@text2, 20%) 52%);
+			}
+			&:after {
+				background: -ms-linear-gradient(bottom left, lighten(@text2, 20%) 48%, @white 50%, @white 52%, lighten(@text2, 20%) 54%);
+				background: -moz-linear-gradient(bottom left, lighten(@text2, 20%) 48%, @white 50%, @white 52%, lighten(@text2, 20%) 54%);
+				background: -o-linear-gradient(bottom left, lighten(@text2, 20%) 48%, @white 50%, @white 52%, lighten(@text2, 20%) 54%);
+				background: -webkit-linear-gradient(bottom left, lighten(@text2, 20%) 48%, @white 50%, @white 52%, lighten(@text2, 20%) 54%);
+				background: linear-gradient(to top right, lighten(@text2, 20%) 48%, @white 50%, @white 52%, lighten(@text2, 20%) 54%);
+			}
+		}
+		&:active {
+			&:before {
+				background: -ms-linear-gradient(bottom left, @text2 46%, @white 48%, @white 50%, @text2 52%);
+				background: -moz-linear-gradient(bottom left, @text2 46%, @white 48%, @white 50%, @text2 52%);
+				background: -o-linear-gradient(bottom left, @text2 46%, @white 48%, @white 50%, @text2 52%);
+				background: -webkit-linear-gradient(bottom left, @text2 46%, @white 48%, @white 50%, @text2 52%);
+				background: linear-gradient(to top right, @text2 46%, @white 48%, @white 50%, @text2 52%);
+			}
+			&:after {
+				background: -ms-linear-gradient(bottom left, @text2 48%, @white 50%, @white 52%, @text2 54%);
+				background: -moz-linear-gradient(bottom left, @text2 48%, @white 50%, @white 52%, @text2 54%);
+				background: -o-linear-gradient(bottom left, @text2 48%, @white 50%, @white 52%, @text2 54%);
+				background: -webkit-linear-gradient(bottom left, @text2 48%, @white 50%, @white 52%, @text2 54%);
+				background: linear-gradient(to top right, @text2 48%, @white 50%, @white 52%, @text2 54%);
+			}
+		}
+	}
+}
+.widget_title() {
+	.fonts(h3);
+	text-align: left;
+	margin: 0 0 25px 0;
+	display: block;
+}
+.box-shadow () {
+	-webkit-box-shadow: 0px 0px 27px 8px rgba(0,0,0,0.08);
+	-moz-box-shadow: 0px 0px 27px 8px rgba(0,0,0,0.08);
+	box-shadow: 0px 3px 27px 0px rgba(0,0,0,0.08);
+}
+
+
+//.border() { border: 1px solid; }
+//.borderColorDark(){ border-color: darken(@block2, 20%); }
+//.bgColorDark(){ background-color: darken(@block2, 20%); }
+//.buttonBehavior(@design, @size ) {
+//	.transition();
+//	.fonts(p);
+//	@small-button-size: 120px;
+//	@middle-button-size: 140px;
+//	@large-button-size: 160px;
+//	@small-button-padding: 10px;
+//	@middle-button-padding: 12.5px 15px;
+//	@large-button-padding: 15px 20px;
+//	font-family: @fontOS;
+//	font-weight: bold;
+//    display: inline-block;
+//	text-align: center;
+//	position: relative;
+//    word-break: break-word;
+//	margin: 2.5px;
+//	max-width: 100%;
+//	border-radius: 0;
+//	&:before, &:after {
+//		.transition();
+//		content: "";
+//		position: absolute;
+//	}
+//	& when (@design = 1), (@design = 2), (@design = 3) {
+//		& when (@size = 1) {
+//			min-width: @small-button-size;
+//			padding: @small-button-padding;
+//		}
+//		& when (@size = 2) {
+//			min-width: @middle-button-size;
+//			padding: @middle-button-padding;
+//		}
+//		& when (@size = 3) {
+//			min-width: @large-button-size;
+//			padding: @large-button-padding;
+//		}
+//	}
+//	& when (@design = 1) {
+//		&:before {
+//			.border();
+//			top: 3px;
+//			left: 3px;
+//			width: calc(~"100% - 6px");
+//			height: calc(~"100% - 6px");
+//		}
+//	}
+//	& when (@design = 2) {
+//		border: 2px solid !important;
+//		& when (@size = 1) { padding: 8px 10px; }
+//		& when (@size = 2) { padding: 10.5px 15px; }
+//		& when (@size = 3) { padding: 13px 20px; }
+//	}
+//	& when (@design = 3) {
+//		margin: 8px 2.5px;
+//		border: none;
+//		&:before, &:after {
+//			left: 0;
+//			width: 100%;
+//			height: 2px;
+//		}
+//		&:before {
+//			top: -4px;
+//			border-top: 2px solid;
+//		}
+//		&:after {
+//			bottom: -4px;
+//			border-bottom: 2px solid;
+//		}
+//		&:hover:before, &:hover:after { height: 4px; }
+//		& when (@size = 1) { padding: 6px 10px; }
+//		& when (@size = 2) { padding: 8px 15px; }
+//		& when (@size = 3) { padding: 10px 20px; }
+//
+//	}
+//}
+//.buttonColor(@design) {
+//	& when (@design = 1), (@design = 2), (@design = 3) { color: @white; }
+//	& when (@design = 1) {
+//		.bgColorDark();
+//		&:before { .borderColorDark(); }
+//		&:hover {
+//			background-color: lighten(@block2, 15%);
+//			&:before { border-color: lighten(@block2, 40%); }
+//		}
+//		&:active {
+//			background-color: lighten(@block2, 10%);
+//			&:before { border-color: lighten(@block2, 30%); }
+//		}
+//	}
+//	& when (@design = 2) {
+//		.borderColorDark() !important;
+//		color: @black;
+//		background: @white;
+//		&:hover {
+//			color: @white;
+//			background-color: lighten(@block2, 15%);
+//			border-color: lighten(@block2, 15%) !important;
+//		}
+//		&:active {
+//			color: @white;
+//			background-color: lighten(@block2, 10%);
+//			border-color: lighten(@block2, 10%) !important;
+//		}
+//	}
+//	& when (@design = 3) {
+//		.bgColorDark();
+//		&:before, &:after { .borderColorDark(); }
+//		&:hover {
+//			background-color: lighten(@block2, 15%);
+//			&:before, &:after {
+//				background-color: lighten(@block2, 15%);
+//				border-color: lighten(@block2, 15%);
+//			}
+//		}
+//		&:active {
+//			background-color: lighten(@block2, 10%);
+//			&:before, &:after {
+//				background-color: lighten(@block2, 10%);
+//				border-color: lighten(@block2, 10%);
+//			}
+//		}
+//	}
+//}
+//.inputs {
+//	.transition();
+//	.border();
+//	.fonts(p);
+//    padding: 11.5px 30px 11.5px 15px ;
+//}
+//.widget_title() {
+//	.fonts(h3);
+//	text-align: left;
+//	margin: 0 0 25px 0;
+//	display: block;
+//}
+
+//.transform(@string) {
+//	-webkit-transform: @string;
+//	-moz-transform:   @string;
+//	-ms-transform:    @string;
+//	-o-transform:    @string;
+//}
+//.pagination(@width,@height,@margin) {
+//	.transition;
+//	.border();
+//	display: inline-block;
+//	vertical-align: middle;
+//	width: @width;
+//	height: @height;
+//	margin: @margin;
+//	cursor: pointer;
+//	border-radius: 0 !important;
+//	&:hover { .transform(scale(2)); }
+//	&:active { opacity: 0.5; }
+//	&.active {
+//		.transform(scale(2));
+//		&:active { opacity: 0.5; }
+//	}
+//}
+//.pagination_color(@color) {
+//	background-color: @color;
+//	border-color: @white !important;
+//	&.active {
+//		background-color: @white;
+//		border-color: @black !important;
+//	}
+//}

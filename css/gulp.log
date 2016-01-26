@@ -1,0 +1,14 @@
+Error in plugin 'gulp-less'
+Message:
+    expected ']' got '*' in file /home/www/projects/ulight/template-server/ulight12/views/templates/everhard-pagetester/css/fishConfig.less line no. 272
+Details:
+    type: Syntax
+    filename: /home/www/projects/ulight/template-server/ulight12/views/templates/everhard-pagetester/css/fishConfig.less
+    index: 4543
+    line: 272
+    callLine: NaN
+    callExtract: undefined
+    column: 57
+    extract: 			@media (max-width: 600px) {,				.h_bottom, .h_bottom .container, .h_bottom div[class=*'col'] {,					padding: 0;
+    lineNumber: 272
+    fileName: /home/www/projects/ulight/template-server/ulight12/views/templates/everhard-pagetester/css/fishConfig.less

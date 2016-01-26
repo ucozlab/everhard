@@ -1,0 +1,45 @@
+<%
+	styles.push(root + '/css/main.css');
+%>
+
+<header>
+	<div class="container-fluid h_top">
+		<div class="row">
+        	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<div class="row">
+					<%- widgets['ul-id-contacts-head'] %>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container h_center">
+		<div class="row">
+        	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<%- widgets['ul-id-icon-header'] %>
+			</div>
+		</div>
+		<div class="row">
+        	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<%- widgets['ul-id-header-sitename']  %>
+			</div>
+		</div>
+	</div>
+	<div class="container h_bottom">
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<%- widgets['ul-id-mainmenu-main'] %>
+			</div>
+		</div>
+	</div>
+</header>
+
+<div id="ul-content">
+	<%- body %>
+</div>
+
+<footer>
+	<div class="container footerCopyright">
+		<%- widgets['ul-id-wysiwyg-copyright'] %>
+	</div>
+</footer>
+
